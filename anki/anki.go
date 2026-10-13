@@ -91,12 +91,12 @@ func (c *AnkiClient) call(ctx context.Context, method string, params any, out an
 
 	resp, err := c.client.Do(req)
 	if err != nil {
-		return fmt.Errorf("AnkiClient %s transport failure (outcome uncertain for writes): %w", method, err)
+		return fmt.Errorf("AnkiClient %s transport failure: %w", method, err)
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode != http.StatusOK {
-		return fmt.Errorf("AnkiClient %s: HTTP %d (outcome uncertain for writes)", method, resp.StatusCode)
+		return fmt.Errorf("AnkiClient %s: HTTP %d", method, resp.StatusCode)
 	}
 
 	raw, err := io.ReadAll(resp.Body)
