@@ -8,6 +8,8 @@ import (
 	"strings"
 )
 
+const serverName = "anki-mcp"
+
 //go:embed version.txt
 var serverVersion string
 

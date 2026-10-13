@@ -6,8 +6,6 @@ import (
 	"os"
 )
 
-const serverName = "anki-mcp"
-
 func main() {
 	showVersion := flag.Bool("version", false, "Show build information")
 	flag.Parse()
