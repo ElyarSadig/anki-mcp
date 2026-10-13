@@ -1,0 +1,15 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "anki": {
+      "type": "local",
+      "command": ["C:/Users/Alice/mcp-servers/anki/anki-mcp.exe"],
+      "enabled": true,
+      "environment": {
+        "ANKI_CONNECT_URL": "http://127.0.0.1:8765",
+        "LOG_PATH": "C:/Users/Alice/mcp-servers/anki/server.log"
+      },
+      "timeout": 30000
+    }
+  }
+}
