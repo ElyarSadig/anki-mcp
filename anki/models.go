@@ -46,3 +46,18 @@ type Description struct {
 	Methods     []Method       `json:"methods"`
 	Limits      map[string]any `json:"limits"`
 }
+
+type Command struct {
+	Method string `json:"method"`
+	Params any    `json:"params"`
+}
+
+type ExecutionParams struct {
+	Commands []Command `json:"commands"`
+}
+
+type ExecutionResponse struct {
+	OperationId string  `json:"operationId"`
+	Method      string  `json:"method"`
+	Session     *string `json:"session"`
+}

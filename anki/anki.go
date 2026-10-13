@@ -17,8 +17,7 @@ import (
 
 var emptyPrams = map[string]struct{}{}
 
-// ankiClient speaks the AnkiClient v6 JSON/HTTP protocol. It never opens
-// Anki's SQLite database directly.
+
 type AnkiClient struct {
 	endpoint string
 	apiKey   string
@@ -130,14 +129,26 @@ func (c *AnkiClient) call(ctx context.Context, method string, params any, out an
 	return nil
 }
 
-func (c *AnkiClient) ApiDescribe(ctx context.Context) (Description, error) {
+func (c *AnkiClient) Describe(ctx context.Context) (Description, error) {
 	const method = "api.describe"
 
-	var desc Description
-	err := c.call(ctx, method, emptyPrams, &desc)
+	var resp Description
+	err := c.call(ctx, method, emptyPrams, &resp)
 	if err != nil {
 		return Description{}, err
 	}
 
-	return desc, nil
+	return resp, nil
+}
+
+func (c *AnkiClient) Execute(ctx context.Context, params ExecutionParams) (ExecutionResponse, error) {
+	const method = "api.execute"
+
+	var resp ExecutionResponse
+	err := c.call(ctx, method, params, &resp)
+	if err != nil {
+		return ExecutionResponse{}, err
+	}
+
+	return resp, nil
 }

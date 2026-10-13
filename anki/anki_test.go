@@ -45,7 +45,7 @@ func TestAnkiError(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	_, err = client.ApiDescribe(t.Context())
+	_, err = client.Describe(t.Context())
 	if err == nil {
 		t.Fatal("expected an error, got nil")
 	}
