@@ -32,32 +32,3 @@ type ankiRequest struct {
 	JsonRPC string `json:"jsonrpc"`
 	Params  any    `json:"params"`
 }
-
-type Method struct {
-	Available bool   `json:"available"`
-	Name      string `json:"name"`
-	Reason    any    `json:"reason"`
-}
-
-type Description struct {
-	ApiMajor    int            `json:"apiMajor"`
-	AnkiVersion string         `json:"ankiVersion"`
-	Object      map[string]any `json:"object"`
-	Methods     []Method       `json:"methods"`
-	Limits      map[string]any `json:"limits"`
-}
-
-type Command struct {
-	Method string `json:"method"`
-	Params any    `json:"params"`
-}
-
-type ExecutionParams struct {
-	Commands []Command `json:"commands"`
-}
-
-type ExecutionResponse struct {
-	OperationId string  `json:"operationId"`
-	Method      string  `json:"method"`
-	Session     *string `json:"session"`
-}
