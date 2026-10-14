@@ -3,16 +3,13 @@
   "mcp": {
     "anki": {
       "type": "local",
-      "command": ["C:/Users/Alice/mcp-servers/anki/anki-mcp.exe"],
+      "command": ["C:/Users/Alice/mcp-servers/anki/anki-mcp-windows-amd64.exe"],
       "enabled": true,
       "environment": {
         "ANKI_CONNECT_URL": "http://127.0.0.1:8765",
-        "ALLOW_WRITES": "1",
-        "BACKUP_DIR": "C:/Users/Alice/mcp-servers/anki/backups",
-        "AUDIT_PATH": "C:/Users/Alice/mcp-servers/anki/audit.jsonl",
-        "LOG_PATH": "C:/Users/Alice/mcp-servers/anki/server.log"
+        "ANKI_API_KEY": "{env:ANKI_API_KEY}"
       },
-      "timeout": 180000
+      "timeout": 120000
     }
   }
 }

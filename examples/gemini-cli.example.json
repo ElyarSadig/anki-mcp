@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "anki": {
+      "command": "C:/Users/Alice/mcp-servers/anki/anki-mcp-windows-amd64.exe",
+      "args": [],
+      "env": {
+        "ANKI_CONNECT_URL": "http://127.0.0.1:8765",
+        "ANKI_API_KEY": "${ANKI_API_KEY}"
+      },
+      "timeout": 120000
+    }
+  }
+}

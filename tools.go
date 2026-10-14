@@ -678,7 +678,7 @@ func registerTools(ankiClient *anki.AnkiClient, srv *mcpserver.MCPServer) {
 		Description: "Poll an operationId for state, progress, cancellable, and eventual result/error. queued, running, and waitingForUser are pending; succeeded, failed, and cancelled are terminal. Results/errors appear only when terminal. Handles survive profile switching but not Anki restart, and completed records are retained for one hour subject to capacity limits.",
 		Annotations: readOnly,
 	}, ankiClient.GetOperation)
-	
+
 	mcpserver.AddTool(srv, mcpserver.Tool{
 		Name:        "cancel_operation",
 		Title:       "Request Cancellation of Anki Operation",

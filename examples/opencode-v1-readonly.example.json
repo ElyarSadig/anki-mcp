@@ -3,13 +3,25 @@
   "mcp": {
     "anki": {
       "type": "local",
-      "command": ["C:/Users/Alice/mcp-servers/anki/anki-mcp.exe"],
+      "command": ["C:/Users/Alice/mcp-servers/anki/anki-mcp-windows-amd64.exe"],
       "enabled": true,
       "environment": {
         "ANKI_CONNECT_URL": "http://127.0.0.1:8765",
-        "LOG_PATH": "C:/Users/Alice/mcp-servers/anki/server.log"
+        "ANKI_API_KEY": "{env:ANKI_API_KEY}"
       },
       "timeout": 30000
     }
+  },
+  "permission": {
+    "anki_*": "deny",
+    "anki_describe": "allow",
+    "anki_get_*": "allow",
+    "anki_list_*": "allow",
+    "anki_search_*": "allow",
+    "anki_validate_*": "allow",
+    "anki_render_card": "allow",
+    "anki_predict_scheduling": "allow",
+    "anki_plan_conversion": "allow",
+    "anki_find_empty_notes": "allow"
   }
 }
