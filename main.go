@@ -25,7 +25,7 @@ func main() {
 		return
 	}
 
-	anki, err := anki.New(os.Getenv("ANKI_CONNECT_URL"), os.Getenv("ANKI_API_KEY"))
+	ankiClient, err := anki.New(os.Getenv("ANKI_CONNECT_URL"), os.Getenv("ANKI_API_KEY"))
 	if err != nil {
 		fmt.Fprintln(os.Stderr, "Invalid Anki Connect configuration.")
 		fmt.Fprintln(os.Stderr, err)
@@ -36,7 +36,7 @@ func main() {
 		ctx, cancel := context.WithTimeout(context.Background(), time.Second*1)
 		defer cancel()
 
-		description, err := anki.Describe(ctx)
+		description, err := ankiClient.Describe(ctx)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "Failed to connect to Anki. Make sure Anki is running with AnkiConnect enabled.")
 			fmt.Fprintln(os.Stderr, err)
@@ -55,6 +55,8 @@ func main() {
 		Title:   "Anki MCP Server",
 		Version: serverVersion,
 	}, nil)
+
+	registerTools(ankiClient, srv)
 
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
 	defer stop()
