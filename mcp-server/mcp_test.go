@@ -20,7 +20,7 @@ type inMemoryTransport struct {
 func (t inMemoryTransport) mcpTransport() mcp.Transport { return t.t }
 
 func TestServerAddToolAndRun(t *testing.T) {
-	server := NewServer(Implementation{Name: "test", Version: "0.0.0"}, ServerOptions{HasTools: true})
+	server := NewServer(Implementation{Name: "test", Version: "0.0.0"}, &ServerOptions{})
 
 	type greetInput struct {
 		Name string `json:"name"`

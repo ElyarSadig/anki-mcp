@@ -14,7 +14,7 @@ type MCPServer struct {
 }
 
 // NewServer creates a server from this package's implementation and options.
-func NewServer(impl Implementation, options ServerOptions) *MCPServer {
+func NewServer(impl Implementation, options *ServerOptions) *MCPServer {
 	srv := mcp.NewServer(&mcp.Implementation{
 		Name:       impl.Name,
 		Title:      impl.Title,
@@ -134,15 +134,15 @@ func toMCPIcons(icons []Icon) []mcp.Icon {
 	return out
 }
 
-func toMCPServerOptions(options ServerOptions) *mcp.ServerOptions {
+func toMCPServerOptions(options *ServerOptions) *mcp.ServerOptions {
+	if options == nil {
+		return nil
+	}
 	return &mcp.ServerOptions{
 		Instructions: options.Instructions,
 		Logger:       options.Logger,
 		PageSize:     options.PageSize,
 		KeepAlive:    options.KeepAlive,
-		HasPrompts:   options.HasPrompts,
-		HasResources: options.HasResources,
-		HasTools:     options.HasTools,
 		GetSessionID: options.GetSessionID,
 	}
 }

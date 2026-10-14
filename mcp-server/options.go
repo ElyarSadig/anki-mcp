@@ -49,22 +49,6 @@ type ServerOptions struct {
 	// the session is automatically closed.
 	KeepAlive time.Duration
 
-	// If true, advertises the prompts capability during initialization,
-	// even if no prompts have been registered.
-	//
-	// Deprecated: Use Capabilities instead.
-	HasPrompts bool
-	// If true, advertises the resources capability during initialization,
-	// even if no resources have been registered.
-	//
-	// Deprecated: Use Capabilities instead.
-	HasResources bool
-	// If true, advertises the tools capability during initialization,
-	// even if no tools have been registered.
-	//
-	// Deprecated: Use Capabilities instead.
-	HasTools bool
-
 	// GetSessionID provides the next session ID to use for an incoming request.
 	// If nil, a default randomly generated ID will be used.
 	//

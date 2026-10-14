@@ -2,13 +2,16 @@ package main
 
 import (
 	"anki-mcp/anki"
+	mcpserver "anki-mcp/mcp-server"
 	"context"
 	_ "embed"
 	"flag"
 	"fmt"
 	"os"
+	"os/signal"
 	"sort"
 	"strings"
+	"syscall"
 	"time"
 )
 
@@ -45,6 +48,21 @@ func main() {
 			fmt.Fprintln(os.Stderr, err)
 			os.Exit(1)
 		}
+	}
+
+	srv := mcpserver.NewServer(mcpserver.Implementation{
+		Name:    "anki",
+		Title:   "Anki MCP Server",
+		Version: serverVersion,
+	}, nil)
+
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+	defer stop()
+
+	fmt.Fprintln(os.Stderr, "Starting Anki MCP server (stdio)")
+
+	if err := srv.Run(ctx, mcpserver.NewStdioTransport()); err != nil {
+		fmt.Fprintf(os.Stderr, "Anki MCP server stopped with error: %v\n", err)
 	}
 }
 
