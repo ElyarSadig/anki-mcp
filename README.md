@@ -71,16 +71,3 @@ go vet ./...
 ```
 
 With Make and a POSIX shell, `make build` builds the current platform and `make build-all` builds Windows, macOS, and Linux for amd64 and arm64 into `build/`.
-
-## Releases
-
-The [GitHub Actions workflow](.github/workflows/build-release.yml) checks the project and builds all six platform/architecture combinations on pull requests, main/master pushes, and manual runs. Binaries are available as workflow artifacts.
-
-To publish a release, update `version.txt`, commit the changes, and push a matching tag (for example, `v0.1.4` for version `0.1.4`):
-
-```sh
-git tag v0.1.4
-git push origin v0.1.4
-```
-
-The workflow creates a GitHub release with the binaries and `SHA256SUMS`. Tags must match `version.txt`; tags containing a hyphen publish as prereleases. It uses the repository's built-in `GITHUB_TOKEN`.
